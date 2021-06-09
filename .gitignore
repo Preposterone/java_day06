@@ -57,3 +57,5 @@ out
 *.iml
 **/*.class
 **/result.txt
+**/target
+**/surefire*
