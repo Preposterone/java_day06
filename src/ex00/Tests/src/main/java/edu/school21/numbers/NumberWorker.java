@@ -14,7 +14,13 @@ public class NumberWorker {
 	}
 
 	public int digitsSum(int number) {
-		return (String.valueOf(number).chars().map(Character::getNumericValue).sum());
+		int sum = 0;
+
+		while (number != 0)	{
+			sum += number % 10;
+			number /= 10;
+		}
+		return (sum);
 	}
 
 	class IllegalNumberException extends RuntimeException {

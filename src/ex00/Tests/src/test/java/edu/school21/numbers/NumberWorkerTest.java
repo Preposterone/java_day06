@@ -1,5 +1,6 @@
 package edu.school21.numbers;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -30,5 +31,10 @@ public class NumberWorkerTest {
 	@CsvFileSource(resources = "/data.csv", numLinesToSkip = 1)
 	public void isSumCorrect(int input, int expected) throws Exception {
 		assertEquals(expected, new NumberWorker().digitsSum(input));
+	}
+
+	@Test
+	public void testNegativeSum() throws Exception	{
+		assertEquals(-10, new NumberWorker().digitsSum(-154));
 	}
 }
