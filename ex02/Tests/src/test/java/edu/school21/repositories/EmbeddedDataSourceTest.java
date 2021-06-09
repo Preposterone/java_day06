@@ -12,7 +12,7 @@ public class EmbeddedDataSourceTest {
 
 	@Test
 	@BeforeEach
-	public void testDBConnection() throws Exception {
+	public void init() throws Exception {
 		EmbeddedDatabaseBuilder dataSource = new EmbeddedDatabaseBuilder();
 		DataSource ds = dataSource
 				.setType(EmbeddedDatabaseType.HSQL)
