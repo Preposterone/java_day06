@@ -89,7 +89,6 @@ public class ProductsRepositoryJdbcImpl implements ProductsRepository {
 		ResultSet rs = null;
 
 		try {
-			if (!findById(product.getId()).isPresent()) {
 				PreparedStatement statement = connection.prepareStatement(query);
 				statement.setString(1, product.getName());
 				statement.setLong(2, product.getPrice());
@@ -97,7 +96,6 @@ public class ProductsRepositoryJdbcImpl implements ProductsRepository {
 				if (rs.next()) {
 					product.setId(rs.getLong("id"));
 				}
-			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

@@ -1,4 +1,4 @@
-package java.edu.school21.repositories;
+package edu.school21.repositories;
 
 import edu.school21.models.Product;
 import edu.school21.repositories.ProductsRepositoryJdbcImpl;
