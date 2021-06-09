@@ -14,7 +14,7 @@ public class NumberWorker {
 	}
 
 	public int digitsSum(int number) {
-		return (String.valueOf(number).chars().map(n -> n - 48).sum());
+		return (String.valueOf(number).chars().map(Character::getNumericValue).sum());
 	}
 
 	class IllegalNumberException extends RuntimeException {
