@@ -75,6 +75,7 @@ public class ProductsRepositoryJdbcImpl implements ProductsRepository {
 				PreparedStatement statement = connection.prepareStatement(query);
 				statement.setString(1, product.getName());
 				statement.setLong(2, product.getPrice());
+				statement.setLong(3, product.getId());
 				statement.execute();
 			}
 		} catch (SQLException e) {
@@ -85,16 +86,17 @@ public class ProductsRepositoryJdbcImpl implements ProductsRepository {
 
 	@Override
 	public void save(Product product) {
-		final String query = "INSERT INTO products (name, price) VALUES (?, ?); CALL IDENTITY();";
+		final String query = "INSERT INTO products (name, price) VALUES (?, ?)";
 		ResultSet rs = null;
 
 		try {
 				PreparedStatement statement = connection.prepareStatement(query);
 				statement.setString(1, product.getName());
 				statement.setLong(2, product.getPrice());
-				rs = statement.executeQuery();
+				statement.execute();
+				rs = connection.createStatement().executeQuery("CALL IDENTITY()");
 				if (rs.next()) {
-					product.setId(rs.getLong("id"));
+					product.setId(rs.getLong(1));
 				}
 		} catch (SQLException e) {
 			e.printStackTrace();
